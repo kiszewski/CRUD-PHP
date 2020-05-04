@@ -13,12 +13,7 @@
 <body>
     <div class="tabela">
         <header class="header p-2">
-            <form action="cadastrarUsuario.php" method="post">
-                <input type="hidden" name="first" value="<?= true ?>">
-                <button class="btn btn-primary" href="cadastrarUsuario.php">
-                    Novo usuario
-                </button>
-            </form>
+            <a class="btn btn-lg btn-primary" href="cadastrarUsuario.php">Novo Usuário</a>
         </header>
         <table class="table table-dark">
             <thead>

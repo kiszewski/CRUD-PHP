@@ -1,6 +1,7 @@
-<form action="cadastrarUsuario.php" method="post" class="form">
+<form action="#" method="post" class="form">
+    <input type="hidden" name="id" value="<?= $user['id'] ?>">
     <div class="form-row">
-        <div class="title mb-2 col-md-11">Cadastro</div>
+        <div class="title mb-2 col-md-11">Cadastrar ou Alterar</div>
         <a class="col-md-1" href="users.php">X</a>
     </div>
     <div class="form-row">
@@ -47,5 +48,5 @@
             <div class="invalid-feedback"><?=$erros['cidade']?></div>
         </div>
     </div>
-    <button class="btn btn-lg btn-primary">Incluir</button>
+    <button class="btn btn-lg btn-primary">Enviar</button>
 </form>

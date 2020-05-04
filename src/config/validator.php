@@ -1,6 +1,7 @@
 <?php 
 
 function validarFormulario($post) {
+    $erros = [];
     if ($post['nome'] === '') {
         $erros['nome'] = 'Nome inválido';
     }
