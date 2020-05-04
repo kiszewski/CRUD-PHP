@@ -2,7 +2,9 @@
     <input type="hidden" name="id" value="<?= $user['id'] ?>">
     <div class="form-row">
         <div class="title mb-2 col-md-11">Cadastrar ou Alterar</div>
-        <a class="col-md-1" href="users.php">X</a>
+        <a class="col-md-1" href="users.php">
+            <i class="icofont-close-line"></i>
+        </a>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
