@@ -1,0 +1,39 @@
+body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div.tabela {
+    width: 95vw;
+}
+
+.form {
+    display: flex;
+    position: absolute;
+    top: 15vh;
+    width: 50vw;
+    padding: 15px;
+    flex-direction: column;
+    background-color: #DDD;
+    z-index: 10;
+    border-radius: 5px;
+}
+
+.form .title {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.form .btn {
+    align-self: flex-end;
+}
+
+.form a {
+    text-decoration: none;
+    color: #333;
+    align-self: center;
+    text-align: center;
+    padding: 10px;
+}
