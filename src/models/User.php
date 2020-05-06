@@ -43,6 +43,30 @@ class User
         }
         return $registros;
     }
+ 
+    public static function getCount() {
+        $sql = "SELECT COUNT(id) as 'count' FROM usuarios";
+        $resultado = Database::enviarQuery($sql);
+        return $resultado->fetch_assoc()['count'];
+    }
+
+    public static function buscarUsuariosPorPagina($pagina, $limit = 5) {
+        if($pagina !== 1) {
+            $offset = ($pagina * $limit) - $limit;
+        }
+
+        $sql = $pagina === 1 ? "SELECT * FROM usuarios LIMIT $limit" : 
+        "SELECT * FROM usuarios LIMIT {$limit} OFFSET {$offset}";
+
+        $resultado = Database::enviarQuery($sql);
+
+        if ($resultado->num_rows > 0) {
+            while ($row = $resultado->fetch_assoc()) {
+                $registros[] = $row;
+            }
+        }
+        return $registros;
+    }
 
     public static function buscarUsuarioPorId($id) {
         $sql = "SELECT * FROM usuarios WHERE id = $id";

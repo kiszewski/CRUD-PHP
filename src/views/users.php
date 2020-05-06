@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/icofont.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <title>CRUD</title>
-</head>
-
-<body>
+<main>
     <header class="header p-2">
         <a class="btn btn-lg btn-p" href="cadastrarUsuario.php">Novo Usuário</a>
     </header>
@@ -47,6 +35,21 @@
             <?php endforeach ?>
         </tbody>
     </table>
-</body>
-
-</html>
+    <nav class="mt-3" aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item <?= $pageAtual == 1 ? 'disabled' : '' ?>">
+                <a class="page-link" href="users.php?page=<?= $pageAtual - 1 ?>">Anterior</a>
+            </li>
+            <?php for($page = 1; $page <= $numPages; $page++): ?>
+                <li class="page-item <?= $page == $pageAtual ? 'active' : '' ?>">
+                    <a class="page-link" href="users.php?page=<?= $page ?>">
+                        <?= $page ?>
+                    </a>
+                </li>
+            <?php endfor ?>
+            <li class="page-item <?= $pageAtual == $numPages ? 'disabled' : '' ?>">
+                <a class="page-link" href="users.php?page=<?= $pageAtual + 1 ?>">Próximo</a>
+            </li>
+        </ul>
+    </nav>
+</main>

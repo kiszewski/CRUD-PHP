@@ -1,7 +1,4 @@
 <?php
-$usuarios = User::buscarTodosUsuarios();
-carregarUsuarios('app', $usuarios);
-
 if (isset($_GET['userId']) && count($_POST) == 0) {
     $id = $_GET['userId'];
     $usuario = User::buscarUsuarioPorId($id);

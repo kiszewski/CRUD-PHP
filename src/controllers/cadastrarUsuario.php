@@ -1,7 +1,4 @@
 <?php
-$usuarios = User::buscarTodosUsuarios();
-carregarUsuarios('app', $usuarios);
-
 if (count($_POST) > 0) {
     $erros = validarFormulario($_POST);   
     $dados = $_POST;
