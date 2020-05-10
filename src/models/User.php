@@ -33,7 +33,7 @@ class User
     public static function buscarTodosUsuarios()
     {
         $registros = [];
-        $sql = "SELECT * FROM usuarios";
+        $sql = "SELECT * FROM usuarios where deleted_at is null";
         $resultado = Database::enviarQuery($sql);
 
         if ($resultado->num_rows > 0) {
@@ -45,7 +45,7 @@ class User
     }
  
     public static function getCount() {
-        $sql = "SELECT COUNT(id) as 'count' FROM usuarios";
+        $sql = "SELECT COUNT(id) as 'count' FROM usuarios where deleted_at is null";
         $resultado = Database::enviarQuery($sql);
         return $resultado->fetch_assoc()['count'];
     }
@@ -55,8 +55,8 @@ class User
             $offset = ($pagina * $limit) - $limit;
         }
 
-        $sql = $pagina === 1 ? "SELECT * FROM usuarios LIMIT $limit" : 
-        "SELECT * FROM usuarios LIMIT {$limit} OFFSET {$offset}";
+        $sql = $pagina === 1 ? "SELECT * FROM usuarios where deleted_at is null LIMIT $limit" : 
+        "SELECT * FROM usuarios where deleted_at is null LIMIT {$limit} OFFSET {$offset}";
 
         $resultado = Database::enviarQuery($sql);
 
@@ -69,7 +69,7 @@ class User
     }
 
     public static function buscarUsuarioPorId($id) {
-        $sql = "SELECT * FROM usuarios WHERE id = $id";
+        $sql = "SELECT * FROM usuarios WHERE id = $id and deleted_at is null";
 
         $resultado = Database::enviarQuery($sql);
 
@@ -100,7 +100,8 @@ class User
 
     public function atualizar()
     {
-        $sql = "UPDATE usuarios SET ";
+        $date = date('Y-m-d');
+        $sql = "UPDATE usuarios SET updated_at = '{$date}',";
 
         foreach($this->dados as $chave => $valor) {
             if($chave !== 'id') {
@@ -123,7 +124,8 @@ class User
     }
 
     public function deletar($id) {
-        $sql = "DELETE FROM usuarios WHERE id = {$id}";
+        $date = date('Y-m-d');
+        $sql = "UPDATE usuarios SET deleted_at = '{$date}' WHERE id = {$id}";
         $resultado = Database::enviarQuery($sql);
 
         if($resultado) {
@@ -131,6 +133,14 @@ class User
         } else {
             return $sql;
         }
+        // $sql = "DELETE FROM usuarios WHERE id = {$id}";
+        // $resultado = Database::enviarQuery($sql);
+
+        // if($resultado) {
+        //     return $resultado;
+        // } else {
+        //     return $sql;
+        // }
     }
 
     private static function obterValores($usuarios = [])

@@ -25,10 +25,10 @@
                     <td><?= $usuario['cidade'] ?></td>
                     <td>
                         <a class="btn btn-warning" href="atualizarUsuario.php?userId=<?= $usuario['id'] ?>">
-                            <i class="icofont-pencil"></i>
+                            <i class="fa fa-edit"></i>
                         </a>
                         <a class="btn btn-danger" href="deletarUsuario.php?userId=<?= $usuario['id'] ?>">
-                            <i class="icofont-trash"></i>
+                            <i class="fa fa-trash"></i>
                         </a>
                     </td>
                 </tr>

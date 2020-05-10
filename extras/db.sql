@@ -8,7 +8,9 @@ CREATE TABLE usuarios (
     email varchar(50) NOT NULL,
     data_nascimento DATE NOT NULL,
     salario float NOT NULL,
-    cidade varchar(50) NOT NULL
+    cidade varchar(50) NOT NULL,
+    deleted_at DATE,
+    updated_at DATE
 );
 
 INSERT INTO usuarios (nome, telefone, email, data_nascimento, salario, cidade) 
